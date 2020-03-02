@@ -1,4 +1,5 @@
 from debugly import debug
+from Debuggableclass import Spam
 
 
 @debug
@@ -24,3 +25,5 @@ def div(a, b):
 if __name__ == '__main__':
     add(2, 3)
     sub(2, 3)
+    S = Spam()
+    S.a()
