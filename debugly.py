@@ -36,3 +36,4 @@ def debugattr(cls):
 
     cls.__getattribute__ = __getattribute__
     return cls
+
