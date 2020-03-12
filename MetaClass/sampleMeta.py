@@ -1,6 +1,8 @@
+from Debugly.debugly import debugmethods
 
 
 class MyType(type):
+
     def __new__(cls, name, bases, clsdict):
         if len(bases) > 1:
             raise TypeError("No")
@@ -9,7 +11,15 @@ class MyType(type):
         return clsobj
 
 
-class Span(metaclass=MyType):
+class debugMeta(type):
+    def __new__(cls, *args, **kwargs):
+        clsobj = super().__new__(cls, *args, **kwargs)
+
+        clsobj = debugmethods(clsobj)
+        return clsobj
+
+
+class Span(metaclass=debugMeta):
     def __init__(self):
         super(Span, self).__init__()
 
@@ -35,3 +45,5 @@ class C(A, B):
         super(C, self).__init__()
         pass
 
+
+c = C()
